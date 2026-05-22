@@ -1,0 +1,31 @@
+﻿{
+  "name": "agent-scaffold",
+  "version": "1.0.0",
+  "description": "Generate a standardized .agent/ directory for AI-assisted software projects",
+  "main": "src/generator.js",
+  "bin": {
+    "agent-scaffold": "./bin/agent-scaffold.js"
+  },
+  "scripts": {
+    "start": "node bin/agent-scaffold.js",
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "ai",
+    "agent",
+    "scaffold",
+    "coding-assistant",
+    "opencode",
+    "developer-tools"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wildanfadh/agent-scaffold"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "preferGlobal": true
+}
