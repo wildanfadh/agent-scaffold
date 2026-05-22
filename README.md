@@ -1,94 +1,230 @@
-﻿# agent-scaffold
+<div align="center">
 
-> Generate a standardized .agent/ directory for AI-assisted software projects.
+# agent-scaffold
 
-**Bahasa Indonesia:** Buat direktori .agent/ yang terstandarisasi untuk project yang menggunakan AI coding assistant.
+**Generate a standardized .agent/ directory for AI-assisted software projects.**
+
+</div>
+
+---
+
+## Table of Contents
+
+- [What is .agent/?](#what-is-agent)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Output Structure](#output-structure)
+- [Template Variables](#template-variables)
+- [Framework Support](#framework-support)
+- [Agent Workflow](#agent-workflow)
+- [Why Use This?](#why-use-this)
+- [License](#license)
+
+---
 
 ## What is .agent/?
 
-The .agent/ directory is a centralized location for all AI agent-related files in a project. It provides:
+The .agent/ directory is the central configuration hub for AI coding assistants in your project. All rules, tasks, and business context live in one place -- no more agents forgetting conventions or losing task continuity between sessions.
 
-- **Agent definitions** — Specialist roles (Coordinator, Fullstack, QA/QC, Test)
-- **Rules** — Coding conventions that agents MUST follow
-- **Instructions** — Session workflows and operational guidelines
-- **Tasks** — Task tracking with status, locks, and assignment
-- **Knowledge** — Domain context and business references
-- **Logs** — Per-module change documentation
+| Directory | Purpose |
+|-----------|---------|
+| **agents/** | Specialist agent role definitions (Fullstack, QA/QC, Test, Coordinator) |
+| **rules/** | Coding conventions that agents MUST follow |
+| **instructions/** | Session workflow and operational guidelines |
+| **tasks/** | Task tracking with status, locks, and assignment |
+| **knowledge/** | Domain context and business references |
+| **logs/** | Per-module change documentation |
 
-## Quick Start
+---
 
-### Option 1: npx (CLI)
+## Installation
 
-`ash
+### Via npx (no install required)
+
+```bash
 npx agent-scaffold
-`
+```
 
-### Option 2: opencode Skill
+### Via npm global
 
-`ash
+```bash
+npm install -g agent-scaffold
+agent-scaffold
+```
+
+### Via opencode Skill
+
+```bash
 opencode skill install agent-scaffold
-`
+```
 
-Then in your project:
+Then in an opencode session:
+> "Use the agent-scaffold skill to create the .agent/ directory"
 
-`
-Use the agent-scaffold skill to create the .agent/ directory
-`
+---
 
-## Features
+## Usage
 
-| Feature | Description |
-|---------|-------------|
-| **Interactive Setup** | Prompts for framework, language, testing approach |
-| **Adaptive Templates** | Rules adjust based on your tech stack |
-| **4 Agent Roles** | Coordinator, Fullstack Engineer, QA/QC, Test Engineer |
-| **Task Tracking** | Markdown-based task queue with lock files |
-| **Bilingual** | Templates in Bahasa Indonesia + English |
-| **Framework Support** | Laravel, CodeIgniter, Next.js, Express, and generic |
+### 1. Run the CLI
 
-## Generated Structure
+```bash
+# In your project root
+npx agent-scaffold
+```
 
-`
+### 2. Answer Interactive Prompts
+
+```
+agent-scaffold -- Generate .agent/ directory
+
+Project name: My App
+Framework (laravel/codeigniter/nextjs/express/django/rails/generic): laravel
+Commit message language (id/en): en
+Testing approach (phpunit/jest/pytest/manual/none): phpunit
+Need Coordinator agent for multi-agent orchestration? (y/n): n
+```
+
+### 3. Done!
+
+```
+.agent/ directory created successfully!
+
+Created:
+  .agent/README.md
+  .agent/agents/fullstack-engineer.md
+  .agent/instructions/README.md
+  .agent/rules/core-rules.md
+  .agent/tasks/tasks.md
+  .agent/knowledge/README.md
+  .agent/logs/CHANGELOG_TEMPLATE.md
+
+Next steps:
+  1. Read .agent/README.md to understand the structure
+  2. Customize .agent/rules/core-rules.md with project-specific conventions
+  3. Add domain knowledge to .agent/knowledge/
+  4. Create tasks in .agent/tasks/tasks.md
+```
+
+### CLI Options
+
+```bash
+# Specify target directory (default: current directory)
+npx agent-scaffold /path/to/project
+```
+
+---
+
+## Output Structure
+
+```
 .agent/
-├── README.md                 # Entry point & quick reference
-├── agents/                   # Agent role definitions
-│   ├── coordinator.md        # Task orchestrator
-│   ├── fullstack-engineer.md # Coding agent
-│   ├── qa-qc-engineer.md     # QA/QC agent
-│   └── test-engineer.md      # Test automation agent
-├── instructions/             # Operational guidelines
-│   ├── README.md             # Session workflow
-│   ├── developer.md          # Developer instructions
-│   └── DB_CHANGE_POLICY.md   # Database change policy
-├── rules/                    # Coding conventions (MUST follow)
-│   └── core-rules.md
-├── tasks/                    # Task tracking
-│   ├── README.md             # Task system docs
-│   ├── tasks.md              # Central task queue
-│   └── locks/                # Lock files for concurrency
-├── knowledge/                # Domain knowledge
-│   └── README.md
-└── logs/                     # Per-module change logs
-    └── CHANGELOG_TEMPLATE.md
-`
+|-- README.md                      # Entry point and quick reference
+|-- agents/                        # Agent role definitions
+|   |-- coordinator.md             #   (optional) Task orchestrator
+|   |-- fullstack-engineer.md      #   Main coding agent
+|   |-- qa-qc-engineer.md          #   Quality assurance agent
+|   |-- test-engineer.md           #   Test automation agent
+|-- instructions/                  # Operational guidelines
+|   |-- README.md                  #   Session workflow
+|   |-- developer.md               #   Developer instructions and patterns
+|   |-- DB_CHANGE_POLICY.md        #   Database change policy
+|-- rules/                         # Coding conventions (MUST follow)
+|   |-- core-rules.md              #   Naming, security, migrations, etc
+|-- tasks/                         # Task tracking
+|   |-- README.md                  #   Task system documentation
+|   |-- tasks.md                   #   Central task queue and status
+|   |-- locks/                     #   Lock files for concurrency
+|-- knowledge/                     # Domain knowledge
+|   |-- README.md                  #   Guide for knowledge directory
+|-- logs/                          # Per-module change logs
+    |-- CHANGELOG_TEMPLATE.md      #   Changelog template
+```
 
-## Workflow
+---
 
-1. **On session start** → Agent reads .agent/instructions/README.md
-2. **Before coding** → Agent reads .agent/rules/core-rules.md
-3. **When working** → Agent updates .agent/tasks/tasks.md
-4. **After changes** → Agent logs to .agent/logs/{module}_changes.md
+## Template Variables
+
+The following variables are replaced automatically during generation:
+
+| Variable | Source | Example Output |
+|----------|--------|---------------|
+| `{project-name}` | User input | `My App` |
+| `{framework}` | User input | `laravel` |
+| `{commit-language}` | User input | `en` |
+| `{testing-approach}` | User input | `phpunit` |
+| `{date}` | Current date | `2026-05-22` |
+
+---
+
+## Framework Support
+
+Each framework gets specific rules injected into `rules/core-rules.md`:
+
+| Framework | Injected Rules |
+|-----------|---------------|
+| **Laravel** | Repository Pattern, Pint, FormRequest, migration paths |
+| **CodeIgniter 3** | SW_Controller, SW_Model, Active Record, CI3 conventions |
+| **Next.js** | App Router, Server/Client Components, TypeScript, Tailwind |
+| **Express** | MVC pattern, Joi/Zod validation, error handling middleware |
+| **Django** | MTV pattern, Class-based views, Django ORM, migrations |
+| **Rails** | Strong params, ActiveRecord, Rails conventions |
+| **Generic** | Standard template without framework-specific rules |
+
+---
+
+## Agent Workflow
+
+The expected workflow for an AI coding assistant:
+
+```
++---------------------------------------------+
+|              SESSION START                  |
++---------------------------------------------+
+|  1. Read .agent/instructions/README.md     |
+|  2. Read .agent/rules/core-rules.md        |
+|  3. Check .agent/tasks/tasks.md for tasks  |
++---------------------+-----------------------+
+                      |
+                      v
++---------------------------------------------+
+|          WHEN WORKING ON TASK               |
++---------------------------------------------+
+|  1. Update status to in_progress            |
+|  2. Follow rules in core-rules.md           |
+|  3. Log changes in logs/                    |
+|  4. Use separate branch per task            |
++---------------------+-----------------------+
+                      |
+                      v
++---------------------------------------------+
+|          BEFORE FINISHING SESSION           |
++---------------------------------------------+
+|  1. Run linter / formatter                  |
+|  2. Run relevant tests                      |
+|  3. Update task status in tasks.md          |
+|  4. Ensure all changes are logged           |
++---------------------------------------------+
+```
+
+---
 
 ## Why Use This?
 
 | Problem | Solution |
 |---------|----------|
-| AI forgets conventions | Rules persist across sessions |
-| No task continuity | Task file survives session restarts |
-| Inconsistent code quality | Enforced rules per project |
-| No change documentation | Automatic changelog per module |
-| Multi-agent conflicts | Lock files prevent concurrent edits |
+| Agents forget project conventions | Rules persist in `rules/` across sessions |
+| No task continuity | Task tracking in `tasks/` survives session restarts |
+| Inconsistent code quality | Standardized, enforced coding rules |
+| No change documentation | Module-level changelogs in `logs/` |
+| Multi-agent conflicts | Lock files in `tasks/locks/` prevent concurrent edits |
+| Language confusion | Bilingual templates (Indonesian + English) |
+
+---
 
 ## License
 
-MIT
+MIT -- Free to use, modify, and distribute.
+
+---
+
+<p align="center">Built for developers everywhere.</p>
