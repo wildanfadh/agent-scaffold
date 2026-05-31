@@ -5,6 +5,7 @@
   "main": "src/generator.js",
   "files": [
     "bin/",
+    "skills/",
     "src/",
     "templates/",
     "README.md",

@@ -1,4 +1,4 @@
-﻿---
+---
 name: agent-scaffold
 description: Generate a standardized .agent directory scaffold for AI-assisted software projects.
 ---
@@ -7,21 +7,21 @@ description: Generate a standardized .agent directory scaffold for AI-assisted s
 
 ## Purpose
 
-Generate a standardized .agent/ directory structure for AI-assisted software projects. Provides agent role definitions, coding rules, task tracking, and domain knowledge organization.
+Generate a standardized `.agent/` directory structure for AI-assisted software projects. Provides agent role definitions, coding rules, task tracking, and domain knowledge organization.
 
 ## Scope
 
 - Workspace-scoped: runs in the target project root
-- Creates .agent/ directory with all subdirectories and template files
+- Creates `.agent/` directory with all subdirectories and template files
 - Interactive prompts to customize templates for the project's tech stack
 
 ## When to Use
 
 Trigger this skill when:
-- User wants to set up AI agent infrastructure in a new project
-- User asks to "create .agent folder", "set up agent rules", "add agent tasks"
-- User mentions organizing AI assistant conventions
-- User wants task tracking for AI coding sessions
+- The user wants to set up AI agent infrastructure in a new project
+- The user asks to create a `.agent` folder, set up agent rules, or add agent tasks
+- The user mentions organizing AI assistant conventions
+- The user wants task tracking for AI coding sessions
 
 ## Step-by-step Workflow
 
@@ -38,7 +38,7 @@ Ask the user:
 
 Create the following structure in the project root:
 
-`
+```
 .agent/
 ├── README.md
 ├── agents/
@@ -60,7 +60,7 @@ Create the following structure in the project root:
 │   └── README.md
 └── logs/
     └── CHANGELOG_TEMPLATE.md
-`
+```
 
 ### 3. Adapt Templates
 
@@ -80,21 +80,21 @@ Customize each template based on user answers:
 - Include a framework-specific project structure starter section
 
 **agents/*.md:**
-- Replace {project-name} with actual project name
+- Replace `{project-name}` with the actual project name
 - Set framework context in role descriptions
 - Include testing context where the template already supports it
 
 **tasks/tasks.md:**
-- Initialize with empty task table
-- Include status legend
+- Initialize with an empty task table
+- Include a status legend
 - Add task guidelines
 
 ### 4. Verify
 
-- Check all files are created
-- Confirm .agent/README.md exists as entry point
-- Ensure locks/ directory exists (empty)
-- Print summary of created files
+- Check that all files are created
+- Confirm `.agent/README.md` exists as the entry point
+- Ensure `locks/` exists and is empty
+- Print a summary of created files
 
 ## Template Variables
 
@@ -102,17 +102,17 @@ Replace these placeholders in templates:
 
 | Variable | Source |
 |----------|--------|
-| {project-name} | User input |
-| {framework} | User input |
-| {commit-language} | User input (ID/EN) |
-| {testing-approach} | User input |
-| {date} | Current date (YYYY-MM-DD) |
+| `{project-name}` | User input |
+| `{framework}` | User input |
+| `{commit-language}` | User input (ID/EN) |
+| `{testing-approach}` | User input |
+| `{date}` | Current date (YYYY-MM-DD) |
 
 ## Output
 
 After completion, print:
 
-`
+```
 .agent/ directory created successfully!
 
 Created:
@@ -129,14 +129,14 @@ Next steps:
   2. Customize .agent/rules/core-rules.md with project-specific conventions
   3. Add domain knowledge to .agent/knowledge/
   4. Create tasks in .agent/tasks/tasks.md
-`
+```
 
 ## Constraints
 
-- NEVER overwrite existing .agent/ directory without user confirmation
-- NEVER modify files outside .agent/
-- NEVER include secrets or credentials in templates
-- If .agent/ already exists, offer overwrite or skip
+- Never overwrite an existing `.agent/` directory without user confirmation
+- Never modify files outside `.agent/`
+- Never include secrets or credentials in templates
+- If `.agent/` already exists, offer overwrite or skip
 
 ## CLI Notes
 

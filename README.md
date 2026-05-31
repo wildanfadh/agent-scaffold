@@ -55,11 +55,13 @@ agent-scaffold
 ### Via opencode Skill
 
 ```bash
-opencode skill install agent-scaffold
+npx skills add https://github.com/wildanfadh/agent-scaffold --skill agent-scaffold
 ```
 
 Then in an opencode session:
 > "Use the agent-scaffold skill to create the .agent/ directory"
+
+This repository exposes the skill from `skills/agent-scaffold/SKILL.md`, which is the standard layout recognized by `skills.sh`.
 
 ---
 
