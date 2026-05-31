@@ -1,5 +1,9 @@
 ﻿# Skill: agent-scaffold
 
+## Description
+
+Generate a standardized `.agent/` directory scaffold for AI-assisted software projects.
+
 ## Purpose
 
 Generate a standardized .agent/ directory structure for AI-assisted software projects. Provides agent role definitions, coding rules, task tracking, and domain knowledge organization.
