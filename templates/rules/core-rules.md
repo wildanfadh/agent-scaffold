@@ -1,28 +1,26 @@
-﻿# Core Development Rules / Aturan Pengembangan Inti
+# Core Development Rules
 
-> These rules MUST be followed by all agents when writing code.
-> Aturan ini WAJIB diikuti oleh semua agent saat menulis kode.
+> These rules must be followed by all agents when writing code.
 
-## 1. Architecture / Arsitektur
+## 1. Architecture
 
-- Follow the established architecture for **{framework}**
-- Use the Repository Pattern where applicable (Interface → Repository → Controller)
-- Separate concerns: Controllers handle HTTP, Models handle data, Services handle business logic
-- Pisahkan tanggung jawab: Controller menangani HTTP, Model menangani data, Service menangani logika bisnis
+- Follow the established architecture for **{framework}**.
+- Use the Repository Pattern where it fits the project structure.
+- Keep concerns separated: controllers handle transport, models handle persistence, and services handle business logic.
 
-## 2. Formatting / Format
+## 2. Formatting
 
-- **Indentation**: Configure per framework (2 or 4 spaces)
-- **Line endings**: LF
-- **Charset**: UTF-8
-- **Final newline**: Required
-- **Trailing whitespace**: Trimmed
-- Run the project's formatter/linter before completing any task
+- **Indentation**: follow framework or project conventions.
+- **Line endings**: LF.
+- **Charset**: UTF-8.
+- **Final newline**: required.
+- **Trailing whitespace**: trimmed.
+- Run the project's formatter or linter before completing any task.
 
-## 3. Naming Conventions / Konvensi Penamaan
+## 3. Naming Conventions
 
 | Element | Convention | Example |
-|---------|-----------|---------|
+|---------|------------|---------|
 | Models | Framework standard | Follow {framework} conventions |
 | Controllers | Framework standard | Follow {framework} conventions |
 | Database tables | snake_case | users, order_items |
@@ -30,63 +28,63 @@
 | Routes | Follow framework pattern | users.index, users.show |
 | Variables | camelCase or snake_case | Follow {framework} conventions |
 
-## 4. Imports / Import
+## 4. Imports
 
-- Group imports logically: framework classes, third-party, application classes
-- Group import secara logis: kelas framework, third-party, kelas aplikasi
+- Group imports logically: framework classes, third-party packages, then application code.
 
 ## 5. Models
 
-- Declare table name, fillable fields, casts, and relationships
-- Type-hint relationship return types
-- Use model events for cache invalidation when applicable
-- Deklarasikan nama tabel, field fillable, casts, dan relasi
+- Declare table names, fillable fields, casts, and relationships when applicable.
+- Type-hint relationship return types when the framework supports it.
+- Use model lifecycle hooks carefully and keep side effects obvious.
 
-## 6. Validation / Validasi
+## 6. Validation
 
-- ALWAYS use dedicated validation classes or middleware
-- NEVER use inline validation in controllers
-- User-facing validation messages must be in the project's UI language
-- SELALU gunakan kelas validasi atau middleware khusus
-- JANGAN gunakan validasi inline di controller
+- Always use dedicated validation classes, schemas, or middleware when available.
+- Never place complex inline validation in controllers.
+- User-facing validation messages must match the project's UI language.
 
-## 7. Error Handling / Penanganan Error
+## 7. Error Handling
 
-- Log errors with context (file, line, user action)
-- User-facing error messages must be in the project's UI language
-- Use try/catch in service/repository layers
-- NEVER expose stack traces or internal details to users
-- Catat error dengan konteks (file, baris, aksi user)
-- JANGAN pernah menampilkan stack trace ke user
+- Log errors with useful context such as file, line, and user action.
+- User-facing error messages must match the project's UI language.
+- Use structured error handling in service or repository layers.
+- Never expose stack traces or internal details to end users.
 
-## 8. Security / Keamanan
+## 8. Security
 
-- NEVER commit secrets, API keys, or credentials
-- Use environment variables for configuration
-- Use middleware for authorization checks on routes
-- CSRF protection is enabled by default — never disable it
-- Validate ALL user input
-- JANGAN pernah commit secrets, API key, atau kredensial
-- Validasi SEMUA input user
+- Never commit secrets, API keys, or credentials.
+- Use environment variables for configuration.
+- Use middleware or framework-native guards for authorization checks.
+- Leave CSRF protection enabled unless the user explicitly approves a change.
+- Validate all user input.
 
-## 9. Database Migrations / Migrasi Database
+## 9. Database Migrations
 
-### New Tables / Tabel Baru
-- Place in the designated migrations directory
-- Naming: YYYY_MM_DD_HHMMSS_create_{table_name}_table
+### New Tables
 
-### Modifying Existing Tables / Mengubah Tabel Existing
-- ALWAYS create a new migration, never modify existing ones
-- Naming: YYYY_MM_DD_HHMMSS_update_{table_name}_{description}
-- Use proper up() and down() methods for rollback
+- Place new migrations in the designated migrations directory.
+- Naming: `YYYY_MM_DD_HHMMSS_create_{table_name}_table`.
+
+### Modifying Existing Tables
+
+- Always create a new migration instead of editing an existing applied migration.
+- Naming: `YYYY_MM_DD_HHMMSS_update_{table_name}_{description}`.
+- Provide safe `up()` and `down()` steps when the framework supports rollback.
 
 ## 10. Git
 
-- NEVER commit changes unless the user explicitly asks
-- NEVER run destructive git commands unless explicitly asked
-- Commit messages should be concise and focus on the "why" not the "what"
-- Use separate branches for each active task
-- Commit messages in: **{commit-language}**
+- Never commit changes unless the user explicitly asks.
+- Never run destructive git commands unless explicitly asked.
+- Keep commit messages concise and focused on the "why".
+- Use separate branches for active tasks.
+- Commit messages in: **{commit-language}**.
+
+## 11. Rule Precedence
+
+- Use `core-rules.md` as the default policy baseline.
+- When a task touches a specialized area, read the matching rule file in `.agent/rules/` before making changes.
+- If two rule files appear to conflict, prefer the more specific rule and document the decision in the task log.
 
 ---
 

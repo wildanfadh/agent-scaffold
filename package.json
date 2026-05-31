@@ -3,12 +3,19 @@
   "version": "1.0.0",
   "description": "Generate a standardized .agent/ directory for AI-assisted software projects",
   "main": "src/generator.js",
+  "files": [
+    "bin/",
+    "src/",
+    "templates/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "bin": {
     "agent-scaffold": "./bin/agent-scaffold.js"
   },
   "scripts": {
     "start": "node bin/agent-scaffold.js",
-    "test": "echo \"No tests yet\" && exit 0"
+    "test": "node test/generator.test.js"
   },
   "keywords": [
     "ai",
@@ -23,6 +30,10 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/wildanfadh/agent-scaffold"
+  },
+  "homepage": "https://github.com/wildanfadh/agent-scaffold#readme",
+  "bugs": {
+    "url": "https://github.com/wildanfadh/agent-scaffold/issues"
   },
   "engines": {
     "node": ">=14.0.0"

@@ -1,75 +1,50 @@
-﻿# Developer Instructions / Instruksi Developer
+# Developer Instructions
 
 ## Build & Syntax Check
 
-`ash
-# Install dependencies
-# (Run framework-specific install command)
+{build-commands}
 
-# Syntax-check a single file
-# (Run framework-specific lint command)
-
-# Run locally
-# (Run framework-specific dev server command)
-`
-
-## Common Patterns / Pola Umum
+## Common Patterns
 
 ### Controller Pattern
 
-`
+```
 // Follow {framework} controller conventions
-// Extend base controller
-// Call auth check in constructor
-// Load models/services
-`
+// Extend the project's base controller where applicable
+// Keep request validation out of business logic
+// Delegate reusable logic to services or repositories
+```
 
 ### Model Pattern
 
-`
+```
 // Follow {framework} model conventions
-// Define table/collection name
-// Define fillable/guarded fields
-// Define relationships
-`
+// Define table or collection metadata explicitly when needed
+// Keep relationships and derived fields readable
+// Avoid mixing transport logic into persistence models
+```
 
 ### Response Pattern
 
-`
-// Use consistent JSON response format
-// Include success flag, message, and data
-// Handle errors with try/catch
-`
+```
+// Use a consistent response shape for success and errors
+// Return actionable error messages without leaking internals
+// Keep controller responses thin and predictable
+```
 
-## Project Structure / Struktur Proyek
+## Project Structure
 
-`
-# Update this section with actual project structure
-# Example:
-src/
-  controllers/
-  models/
-  views/
-  routes/
-`
+{project-structure}
 
-## Key Domain Terms / Istilah Domain Penting
+## Key Domain Terms
 
-# List important domain-specific terms here
-# Example:
-# OPD = Government agency
-# Renaksi = Action plan
-# POKIN = Performance tree
+- Add project-specific business terms here.
+- Keep naming aligned with code, routes, and documentation.
+- Prefer one authoritative term per business concept.
 
-## Debug / Debugging
+## Debugging
 
-`
-# List debugging tools and methods available
-# Example:
-# - Log output to console
-# - Use framework debug mode
-# - Check database query logs
-`
+{debug-notes}
 
 ---
 

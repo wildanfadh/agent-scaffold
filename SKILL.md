@@ -43,10 +43,10 @@ Create the following structure in the project root:
 │   └── test-engineer.md
 ├── instructions/
 │   ├── README.md
-│   ├── developer.md
-│   └── DB_CHANGE_POLICY.md
+│   └── developer.md
 ├── rules/
-│   └── core-rules.md
+│   ├── core-rules.md
+│   └── database.md
 ├── tasks/
 │   ├── README.md
 │   ├── tasks.md
@@ -66,15 +66,18 @@ Customize each template based on user answers:
 - Include indentation, charset, formatting rules
 - Add security rules (no secrets, CSRF, validation)
 
+**rules/database.md:**
+- Keep database policy separate from general workflow instructions
+- Document approval expectations and restricted operations
+
 **instructions/developer.md:**
-- Add framework-specific build commands
-- Include common code patterns
-- Add project structure overview
+- Add framework-specific build commands and debugging notes
+- Include a framework-specific project structure starter section
 
 **agents/*.md:**
 - Replace {project-name} with actual project name
 - Set framework context in role descriptions
-- Adjust tool permissions based on testing approach
+- Include testing context where the template already supports it
 
 **tasks/tasks.md:**
 - Initialize with empty task table
@@ -110,8 +113,8 @@ After completion, print:
 Created:
   .agent/README.md
   .agent/agents/ (4 files)
-  .agent/instructions/ (3 files)
-  .agent/rules/core-rules.md
+  .agent/instructions/ (2 files)
+  .agent/rules/ (2 files)
   .agent/tasks/ (2 files + locks/)
   .agent/knowledge/README.md
   .agent/logs/CHANGELOG_TEMPLATE.md
@@ -128,7 +131,13 @@ Next steps:
 - NEVER overwrite existing .agent/ directory without user confirmation
 - NEVER modify files outside .agent/
 - NEVER include secrets or credentials in templates
-- If .agent/ already exists, offer to merge or skip
+- If .agent/ already exists, offer overwrite or skip
+
+## CLI Notes
+
+- The CLI supports both interactive and non-interactive usage.
+- If all required values are provided as flags, generation can run without prompts.
+- If only some values are provided, the CLI prompts for the remaining answers.
 
 ## Example Prompts
 

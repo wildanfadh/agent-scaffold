@@ -72,17 +72,45 @@ Then in an opencode session:
 npx agent-scaffold
 ```
 
+Or run it non-interactively:
+
+```bash
+npx agent-scaffold . \
+  --project-name "My App" \
+  --framework nextjs \
+  --commit-language en \
+  --testing-approach jest \
+  --coordinator \
+  --overwrite
+```
+
+For CI or scripting, use quiet or JSON output:
+
+```bash
+npx agent-scaffold . \
+  --project-name "My App" \
+  --framework nextjs \
+  --commit-language en \
+  --testing-approach jest \
+  --coordinator \
+  --overwrite \
+  --output-json
+```
+
 ### 2. Answer Interactive Prompts
 
 ```
 agent-scaffold -- Generate .agent/ directory
 
-Project name: My App
+Project name / Nama project: My App
 Framework (laravel/codeigniter/nextjs/express/django/rails/generic): laravel
 Commit message language (id/en): en
 Testing approach (phpunit/jest/pytest/manual/none): phpunit
 Need Coordinator agent for multi-agent orchestration? (y/n): n
 ```
+
+If `.agent/` already exists, the CLI asks for confirmation before replacing it.
+Choosing `y` removes the existing `.agent/` directory and generates a fresh copy.
 
 ### 3. Done!
 
@@ -94,6 +122,7 @@ Created:
   .agent/agents/fullstack-engineer.md
   .agent/instructions/README.md
   .agent/rules/core-rules.md
+  .agent/rules/database.md
   .agent/tasks/tasks.md
   .agent/knowledge/README.md
   .agent/logs/CHANGELOG_TEMPLATE.md
@@ -110,7 +139,28 @@ Next steps:
 ```bash
 # Specify target directory (default: current directory)
 npx agent-scaffold /path/to/project
+
+# Show help
+npx agent-scaffold --help
 ```
+
+Notes:
+- Interactive prompts are shown only for values not provided via flags
+- Non-interactive mode works when all required answers are provided as flags
+- Existing `.agent/` directories can be overwritten with `--overwrite` or `--yes`
+
+Supported flags:
+- `--project-name <name>`
+- `--framework <laravel|codeigniter|nextjs|express|django|rails|generic>`
+- `--commit-language <id|en>`
+- `--testing-approach <phpunit|jest|pytest|manual|none>`
+- `--coordinator`
+- `--no-coordinator`
+- `--overwrite`
+- `--yes`
+- `--quiet`
+- `--output-json`
+- `--help`
 
 ---
 
@@ -127,9 +177,9 @@ npx agent-scaffold /path/to/project
 |-- instructions/                  # Operational guidelines
 |   |-- README.md                  #   Session workflow
 |   |-- developer.md               #   Developer instructions and patterns
-|   |-- DB_CHANGE_POLICY.md        #   Database change policy
 |-- rules/                         # Coding conventions (MUST follow)
 |   |-- core-rules.md              #   Naming, security, migrations, etc
+|   |-- database.md                #   Database change policy
 |-- tasks/                         # Task tracking
 |   |-- README.md                  #   Task system documentation
 |   |-- tasks.md                   #   Central task queue and status
@@ -154,6 +204,8 @@ The following variables are replaced automatically during generation:
 | `{testing-approach}` | User input | `phpunit` |
 | `{date}` | Current date | `2026-05-22` |
 
+Some templates intentionally keep example placeholders such as `logs/{module}_changes.md` or `.agent/tasks/locks/{id}.lock` because they are documentation examples, not generation-time variables.
+
 ---
 
 ## Framework Support
@@ -170,6 +222,8 @@ Each framework gets specific rules injected into `rules/core-rules.md`:
 | **Rails** | Strong params, ActiveRecord, Rails conventions |
 | **Generic** | Standard template without framework-specific rules |
 
+Current framework customization includes `rules/core-rules.md`, `rules/database.md`, placeholder replacement across templates, and framework-specific sections in `instructions/developer.md`.
+
 ---
 
 ## Agent Workflow
@@ -181,7 +235,7 @@ The expected workflow for an AI coding assistant:
 |              SESSION START                  |
 +---------------------------------------------+
 |  1. Read .agent/instructions/README.md     |
-|  2. Read .agent/rules/core-rules.md        |
+|  2. Read relevant files in .agent/rules/   |
 |  3. Check .agent/tasks/tasks.md for tasks  |
 +---------------------+-----------------------+
                       |

@@ -1,55 +1,52 @@
-﻿# Change Log Template / Template Log Perubahan
+# Change Log Template
 
-> Use this template to document all code changes in the project.
-> Gunakan template ini untuk mendokumentasikan semua perubahan kode.
+> Use this template to document code changes in the project.
 
-## Module: {module-name}
+## Module: module_name
 
-### Change Entry / Entri Perubahan
+### Change Entry
 
 | Field | Value |
 |-------|-------|
 | **Date** | YYYY-MM-DD |
-| **Task ID** | (link to task if applicable) |
-| **Author** | Agent name or human |
+| **Task ID** | Link to the related task when applicable |
+| **Author** | Agent name or human contributor |
 | **Status** | Completed / In Review / Rolled Back |
 
-### Description / Deskripsi
+### Description
 
-_Brief description of what was changed and why._
-_Deskripsi singkat tentang apa yang diubah dan mengapa._
+_Briefly describe what changed and why._
 
-### Files Changed / File yang Diubah
+### Files Changed
 
 | File | Change Type | Description |
 |------|-------------|-------------|
-| path/to/file | Added / Modified / Deleted | What was changed |
+| path/to/file | Added / Modified / Deleted | What changed |
 
-### What Was Changed / Apa yang Diubah
+### What Was Changed
 
 - Detail 1
 - Detail 2
 - Detail 3
 
-### Testing / Pengujian
+### Testing
 
 - [ ] Linting passed
 - [ ] Tests passed (specify which)
 - [ ] Manual verification completed
 
-### Notes / Catatan
+### Notes
 
-_Additional context, caveats, or follow-up items._
-_Konteks tambahan, catatan penting, atau tindak lanjut._
+_Add caveats, follow-up work, or supporting context here._
 
 ---
 
-## How to Use / Cara Menggunakan
+## How to Use
 
-1. Copy this template to a new section in the module's change log file
-2. Fill in all fields
-3. Link to the relevant task
-4. Update status when reviewed/merged
+1. Copy this template into the relevant module change log.
+2. Fill in all fields.
+3. Link to the related task when available.
+4. Update the status after review or merge.
 
 ---
 

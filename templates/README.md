@@ -1,36 +1,35 @@
-﻿# .agent/ Directory
+# .agent Directory
 
-> Central location for all AI agent-related documentation and configuration.
->
-> **Pusat dokumentasi dan konfigurasi untuk AI coding agent.**
+> Central location for AI agent documentation, operating rules, and project context.
 
-## Structure / Struktur
+## Structure
 
-| Path | Purpose / Tujuan |
-|------|-----------------|
-| gents/ | Agent role definitions / Definisi peran agent |
-| instructions/ | Session workflows and operational guidelines / Alur kerja sesi |
-| ules/ | Project-wide coding conventions (MUST follow) / Konvensi coding wajib |
-| 	asks/ | Active task tracking and per-module breakdown / Pelacakan tugas aktif |
-| knowledge/ | Domain knowledge and business context / Konteks bisnis dan domain |
-| logs/ | Per-module change logs / Log perubahan per modul |
+| Path | Purpose |
+|------|---------|
+| agents/ | Agent role definitions |
+| instructions/ | Session workflows and operational guidelines |
+| rules/ | Project-wide coding conventions that agents must follow |
+| tasks/ | Active task tracking and per-module breakdown |
+| knowledge/ | Domain knowledge and business context |
+| logs/ | Per-module change logs |
 
-## Quick Reference / Referensi Cepat
+## Quick Reference
 
-| What you need / Yang dibutuhkan | Where to find it / Lokasi |
-|-------------------------------|--------------------------|
+| What you need | Where to find it |
+|---------------|------------------|
 | How to start a session | instructions/README.md |
-| Coding conventions | ules/core-rules.md |
-| What to work on | 	asks/tasks.md |
+| Coding conventions | rules/core-rules.md |
+| Database policy | rules/database.md |
+| What to work on | tasks/tasks.md |
 | Domain context | knowledge/ |
 | Log your changes | logs/{module}_changes.md |
 
-## Workflow Summary / Ringkasan Alur Kerja
+## Workflow Summary
 
-1. Read instructions/README.md on session start / Baca saat memulai sesi
-2. Follow ules/core-rules.md when writing code / Ikuti saat menulis kode
-3. Check 	asks/tasks.md for active work / Cek untuk tugas aktif
-4. Log all changes in logs/ / Catat semua perubahan
+1. Read instructions/README.md at session start.
+2. Follow rules/core-rules.md and any specialized rule files needed for the task.
+3. Check tasks/tasks.md for active work.
+4. Log important changes in logs/.
 
 ---
 

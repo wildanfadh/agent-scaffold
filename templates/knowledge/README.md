@@ -1,18 +1,17 @@
-﻿# Knowledge / Pengetahuan
+# Knowledge
 
 This directory contains domain knowledge, references, and business context used by AI agents to understand the project deeply.
-Direktori ini berisi pengetahuan domain, referensi, dan konteks bisnis yang digunakan oleh AI agent untuk memahami project secara mendalam.
 
-## Purpose / Tujuan
+## Purpose
 
-- Store technical and functional documentation
-- Quick references for domain knowledge
-- Validated implementation patterns
-- Glossary and term mapping
+- Store technical and functional documentation.
+- Keep quick references for domain knowledge.
+- Capture validated implementation patterns.
+- Maintain a glossary and term mapping.
 
-## Suggested Structure / Struktur yang Disarankan
+## Suggested Structure
 
-`
+```
 knowledge/
 ├── README.md              # This file
 ├── domain/                # Business domain knowledge
@@ -23,14 +22,14 @@ knowledge/
 │   └── patterns.md        # Implementation patterns
 └── references/            # External references
     └── links.md           # Useful links and resources
-`
+```
 
-## Usage / Penggunaan
+## Usage
 
-- Agents read this directory to understand domain context
-- Documents written in Bahasa Indonesia for domain logic
-- Code/technical in English
-- Update documentation when discovering new reusable patterns
+- Agents read this directory to understand domain context.
+- Keep domain logic and business rules current.
+- Record reusable patterns discovered during implementation.
+- Prefer concise, searchable documents over long narrative notes.
 
 ---
 

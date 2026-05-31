@@ -1,53 +1,44 @@
-﻿# Agent Instructions / Instruksi Agent
+# Agent Instructions
 
 How agents should operate when working on this project.
-Cara agent beroperasi saat bekerja pada project ini.
 
-## Session Workflow / Alur Kerja Sesi
+## Session Workflow
 
-### On Session Start / Saat Memulai Sesi
+### On Session Start
 
-1. Read .agent/instructions/README.md (this file)
-2. Read .agent/rules/core-rules.md — coding conventions you MUST follow
-3. Check .agent/tasks/ for active/incomplete tasks from previous sessions
+1. Read `.agent/instructions/README.md`.
+2. Read `.agent/rules/core-rules.md` before making code changes.
+3. Read any additional rule files in `.agent/rules/` that apply to the task.
+4. Check `.agent/tasks/tasks.md` for active or incomplete work from previous sessions.
 
-### When Working on a Task / Saat Mengerjakan Tugas
+### When Working on a Task
 
-1. Note the task in .agent/tasks/tasks.md with status in_progress
-2. Follow all conventions in .agent/rules/core-rules.md
-3. Log changes in .agent/logs/{module}_changes.md
-4. Use separate branches for each active task
-5. Use commit messages in the configured language ({commit-language})
-6. When task is ready for review, push to branch and create a separate PR
+1. Mark the task as `in_progress` in `.agent/tasks/tasks.md`.
+2. Follow the relevant rule files in `.agent/rules/`.
+3. Log notable changes in `.agent/logs/{module}_changes.md`.
+4. Keep implementation, tests, and documentation aligned.
+5. Open a separate branch and PR when the workflow requires isolated review.
 
-### Before Finishing a Session / Sebelum Mengakhiri Sesi
+### Before Finishing a Session
 
-1. Run linting/formatting tools
-2. Run relevant tests
-3. Update .agent/tasks/tasks.md with current status
-4. Ensure all changes are logged in .agent/logs/
+1. Run the project's formatter, linter, or equivalent checks.
+2. Run the relevant automated or manual tests.
+3. Update `.agent/tasks/tasks.md` with the current status.
+4. Ensure the related change log is up to date.
 
-## Important Rules / Aturan Penting
+## Operational Checklists
 
-- **NEVER** commit changes unless the user explicitly asks
-- **NEVER** run destructive commands unless explicitly asked
-- **ALWAYS** read .agent/rules/core-rules.md before writing any code
-- **ALWAYS** update .agent/tasks/tasks.md when task status changes
-- **ALWAYS** log changes in the appropriate module log file
-- User-facing error/validation messages must be in the project's UI language
+### Logging Changes
 
-## Change Log Guidelines / Pedoman Changelog
+1. Use one log file per module, such as `auth_module_changes.md`.
+2. Start from `logs/CHANGELOG_TEMPLATE.md`.
+3. Record the date, files changed, status, and a concise summary.
 
-- One log file per module (e.g., uth_module_changes.md, user_module_changes.md)
-- Use the template in logs/CHANGELOG_TEMPLATE.md
-- Include: date, description, files changed, what was changed, and status
-- Module name should match the route prefix or primary model name
+### Completing a Task
 
-## Testing Instructions / Instruksi Testing
-
-1. Run tests after making changes
-2. For specific module tests, use filter option
-3. Check for linting errors before completing any task
+1. Confirm the acceptance criteria are met.
+2. Confirm the relevant checks and tests have passed.
+3. Confirm the task status and logs reflect the latest state.
 
 ---
 

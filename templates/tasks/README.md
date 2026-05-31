@@ -1,22 +1,20 @@
-﻿# Tasks / Tugas
+# Tasks
 
 This directory contains task definitions and tracking for AI-assisted development.
-Direktori ini berisi definisi dan pelacakan tugas untuk pengembangan dengan AI.
 
-## Task File Format / Format File Tugas
+## Task File Format
 
-Tasks are tracked in 	asks.md with the following columns:
-Tugas dilacak di 	asks.md dengan kolom berikut:
+Tasks are tracked in `tasks.md` with the following columns:
 
 | Column | Description |
 |--------|-------------|
 | Task | Short descriptive name |
-| Module | Which module/feature area |
-| Status | Current state (see legend below) |
+| Module | Feature area or subsystem |
+| Status | Current state |
 | Started | Date work began |
 | Notes | Detailed progress notes |
 
-## Status Legend / Legenda Status
+## Status Legend
 
 | Symbol | Status | Meaning |
 |--------|--------|---------|
@@ -25,36 +23,34 @@ Tugas dilacak di 	asks.md dengan kolom berikut:
 | ✅ | Completed | Done and verified |
 | ❌ | Cancelled | No longer needed |
 
-## Locking Protocol / Protokol Locking
+## Locking Protocol
 
-- To claim a task, create a lock file at .agent/tasks/locks/{id}.lock
-- Remove the lock file when the task is complete or if releasing it
-- If a lock file exists, other agents must not start working on that task
-- Untuk mengklaim tugas, buat file lock di .agent/tasks/locks/{id}.lock
-- Hapus file lock saat tugas selesai atau saat melepas klaim
+- To claim a task, create a lock file at `.agent/tasks/locks/{id}.lock`.
+- Remove the lock file when the task is complete or released.
+- If a lock file exists, other agents must not start that task.
 
-## Task Guidelines / Pedoman Tugas
+## Task Guidelines
 
-### Adding a Task / Menambah Tugas
+### Adding a Task
 
-1. Add a row to the **Active Tasks** table in 	asks.md
-2. Set status to ⬜ Pending
-3. When starting work, update status to 🔄 In Progress
-4. Log detailed changes in ../logs/{module}_changes.md
+1. Add a row to the **Active Tasks** table in `tasks.md`.
+2. Set the status to ⬜ Pending.
+3. When work starts, update the status to 🔄 In Progress.
+4. Log detailed changes in `../logs/{module}_changes.md`.
 
-### Completing a Task / Menyelesaikan Tugas
+### Completing a Task
 
-1. Run linting and tests
-2. Update status to ✅ Completed
-3. Move the row from **Active Tasks** to **Completed Tasks**
-4. Ensure the change log is updated
+1. Run linting and tests.
+2. Update the status to ✅ Completed.
+3. Move the row from **Active Tasks** to **Completed Tasks**.
+4. Ensure the change log is updated.
 
 ### Git Workflow per Task
 
-1. Each task must be worked on a separate branch
-2. Each task must have a separate push to remote
-3. Each task must have a separate pull request
-4. Commit messages must explain the "why" not just the "what"
+1. Work on each task in a separate branch.
+2. Push each task independently.
+3. Open a separate pull request for each task.
+4. Write commit messages that explain the "why", not only the "what".
 
 ---
 
